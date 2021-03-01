@@ -12,5 +12,5 @@ LABEL org.opencontainers.image.authors=me@elliotcourant.dev
 LABEL org.opencontainers.image.title="DeepSource"
 LABEL org.opencontainers.image.description="DeepSource Docker Image"
 
-COPY --from=builder /bin/deepsource /bin/deep
+COPY --from=builder /bin/deepsource /bin/deepsource
 ENTRYPOINT ["/bin/deepsource"]
