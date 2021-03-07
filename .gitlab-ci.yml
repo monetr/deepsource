@@ -3,6 +3,9 @@ stages:
   - Build Container
   - Publish
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 Go Build:
   stage: Build CLI
   image: golang:1.16.0
