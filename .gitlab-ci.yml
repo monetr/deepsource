@@ -43,4 +43,4 @@ Publish GitHub - REST API:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"ghcr.io\":{\"username\":\"elliotcourant\",\"password\":\"$K8S_SECRET_GITHUB_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
   script:
-    - ./publish.sh
+    - $CI_PROJECT_DIR/publish.sh
