@@ -1,9 +1,21 @@
 stages:
-  - Build
+  - Build CLI
+  - Build Container
   - Publish
 
-Build:
-  stage: Build
+Go Build:
+  stage: Build CLI
+  image: golang:1.16.0
+  tags:
+    - k8s:shared
+    - arch:amd64
+  script:
+    - cd ./cli
+    - go get ./...
+    - go build github.com/deepsourcelabs/cli
+
+Kaniko:
+  stage: Build Container
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [ "" ]
