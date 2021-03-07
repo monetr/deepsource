@@ -2,6 +2,8 @@
 
 UPSTREAM-TAG=$((cd ./cli && git describe))
 
+echo "Publishing as $(UPSTREAM-TAG)"
+
 /kaniko/executor --context $CI_PROJECT_DIR \
   --build-arg $CI_COMMIT_SHA \
   --dockerfile $CI_PROJECT_DIR/Dockerfile \
