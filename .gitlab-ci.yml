@@ -10,9 +10,8 @@ Go Build:
     - k8s:shared
     - arch:amd64
   script:
-    - cd ./cli
-    - go get ./...
-    - go build github.com/deepsourcelabs/cli
+    - |
+      cd ./cli && go get ./... && go build github.com/deepsourcelabs/cli
 
 Kaniko:
   stage: Build Container
