@@ -13,8 +13,7 @@ Go Build:
     - k8s:shared
     - arch:amd64
   script:
-    - |
-      cd ./cli && go get ./... && go build github.com/deepsourcelabs/cli
+    - (cd ./cli && go get ./... && go build github.com/deepsourcelabs/cli)
 
 Kaniko:
   stage: Build Container
@@ -43,4 +42,5 @@ Publish GitHub - REST API:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"ghcr.io\":{\"username\":\"elliotcourant\",\"password\":\"$K8S_SECRET_GITHUB_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
   script:
+    - ls
     - $CI_PROJECT_DIR/publish.sh
