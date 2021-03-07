@@ -1,5 +1,6 @@
 stages:
   - Build
+  - Publish
 
 Build:
   stage: Build
