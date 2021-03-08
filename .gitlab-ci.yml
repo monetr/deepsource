@@ -42,7 +42,7 @@ Publish GitHub - REST API:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"ghcr.io\":{\"username\":\"elliotcourant\",\"password\":\"$K8S_SECRET_GITHUB_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
   script:
-    - export UPSTREAM-TAG=$((cd ./cli && git describe))
+    - export UPSTREAM-TAG=$(cd ./cli && git describe)
     - echo "Publishing as $UPSTREAM-TAG"
     - |
       /kaniko/executor --context $CI_PROJECT_DIR \
