@@ -13,3 +13,5 @@ LABEL org.opencontainers.image.title="DeepSource"
 LABEL org.opencontainers.image.description="DeepSource Docker Image"
 
 COPY --from=builder /build/bin/deepsource /usr/bin/deepsource
+RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+ENTRYPOINT ["/usr/bin/deepsource"]
