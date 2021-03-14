@@ -14,6 +14,13 @@ Go Build:
     - arch:amd64
   script:
     - (cd ./cli && go get ./... && go build github.com/deepsourcelabs/cli)
+    - export UPSTREAM_TAG=$(cd ./cli && git describe)
+    - echo $UPSTREAM_TAG > .upstream_tag
+  cache:
+    key: ${CI_COMMIT_SHA}
+    paths:
+      - .upstream_tag
+    policy: push
 
 Kaniko:
   stage: Build Container
@@ -42,11 +49,16 @@ Publish GitHub - REST API:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"ghcr.io\":{\"username\":\"elliotcourant\",\"password\":\"$K8S_SECRET_GITHUB_ACCESS_TOKEN\"}}}" > /kaniko/.docker/config.json
   script:
-    - export UPSTREAM-TAG=$(cd ./cli && git describe)
-    - echo "Publishing as $UPSTREAM-TAG"
+    - export UPSTREAM_TAG=$(cat .upstream_tag)
+    - echo "Publishing as $UPSTREAM_TAG"
     - |
       /kaniko/executor --context $CI_PROJECT_DIR \
         --build-arg $CI_COMMIT_SHA \
         --dockerfile $CI_PROJECT_DIR/Dockerfile \
         --destination ghcr.io/harderthanitneedstobe/deepsource:latest \
-        --destination ghcr.io/harderthanitneedstobe/deepsource:$UPSTREAM-TAG
+        --destination ghcr.io/harderthanitneedstobe/deepsource:$UPSTREAM_TAG
+  cache:
+    key: ${CI_COMMIT_SHA}
+    paths:
+      - .upstream_tag
+    policy: pull
