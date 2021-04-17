@@ -23,8 +23,8 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           registry: containers.monetr.dev
-          username: ${{ secrets.containers_push_username }}
-          password: ${{ secrets.containers_push_password }}
+#          username: ${{ secrets.containers_push_username }}
+#          password: ${{ secrets.containers_push_password }}
           tags: latest,${{ steps.tag.outputs.POST_TAG }}
           repository: deepsource
       - name: Build and push ghcr.io
