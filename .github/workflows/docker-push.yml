@@ -17,8 +17,7 @@ jobs:
       - name: Generate Tag
         id: tag
         run: |
-          ls -la ./cli
-          echo ::set-output name=POST_TAG::$(cd ./cli && git describe)
+          echo ::set-output name=POST_TAG::$(date +%Y.%m.%d)
       - name: Build and push containers.monetr.dev
         uses: docker/build-push-action@v1
         with:
