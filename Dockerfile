@@ -6,8 +6,8 @@ RUN go build -o /build/bin/deepsource github.com/deepsourcelabs/cli
 
 FROM alpine:3.13.4
 
-LABEL org.opencontainers.image.url=https://github.com/harderthanitneedstobe/deepsource
-LABEL org.opencontainers.image.source=https://github.com/harderthanitneedstobe/deepsource
+LABEL org.opencontainers.image.url=https://github.com/monetrapp/deepsource
+LABEL org.opencontainers.image.source=https://github.com/monetrapp/deepsource
 LABEL org.opencontainers.image.authors=me@elliotcourant.dev
 LABEL org.opencontainers.image.title="DeepSource"
 LABEL org.opencontainers.image.description="DeepSource Docker Image"
