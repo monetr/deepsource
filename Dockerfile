@@ -4,7 +4,7 @@ WORKDIR /build
 RUN go get ./...
 RUN go build -o /build/bin/deepsource github.com/deepsourcelabs/cli
 
-FROM alpine:3.13.5
+FROM alpine:3.14.0
 
 LABEL org.opencontainers.image.url=https://github.com/monetrapp/deepsource
 LABEL org.opencontainers.image.source=https://github.com/monetrapp/deepsource
