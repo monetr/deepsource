@@ -18,7 +18,7 @@ jobs:
         run: |
           echo ::set-output name=POST_TAG::$(date +%Y.%m.%d)
       - name: Build and push containers.monetr.dev
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
           registry: containers.monetr.dev
           username: ${{ secrets.containers_push_username }}
@@ -26,7 +26,7 @@ jobs:
           tags: latest,${{ steps.tag.outputs.POST_TAG }}
           repository: deepsource
       - name: Build and push ghcr.io
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}

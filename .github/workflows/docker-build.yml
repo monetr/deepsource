@@ -15,7 +15,7 @@ jobs:
         with:
           submodules: recursive
       - name: Build
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
           registry: containers.monetr.dev
           repository: deepsource
