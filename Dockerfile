@@ -1,4 +1,4 @@
-FROM golang:1.17.2 AS builder
+FROM golang:1.22.1 AS builder
 COPY ./cli /build
 WORKDIR /build
 RUN go get ./...
