@@ -8,7 +8,7 @@ variables:
 
 Go Build:
   stage: Build CLI
-  image: golang:1.17.2
+  image: golang:1.25.3
   tags:
     - k8s:shared
     - arch:amd64
